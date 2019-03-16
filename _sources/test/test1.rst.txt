@@ -4,17 +4,6 @@ try sphinx 1
 | i make first sphinx web documents.
 | these are made by sphinx
 
-.. seqdiag::
-   :desctable:
-
-   seqdiag {
-      A -> B[label = "test"];
-      B -> C[label = "test"];
-      A [description = "browsers in each client"];
-      B [description = "web server"];
-      C [description = "database server"];
-   }
-
 table
 
 ====== ========= =======
