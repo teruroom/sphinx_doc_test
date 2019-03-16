@@ -9,10 +9,10 @@ try sphinx second
 
    seqdiag {
       Taro -> Bill[label = "i like you"];
-      Bill -> Taro[label = "i hate you"];
-      Taro -> Carly[label = "i love you"];
-      Carly -> Taro[label = "i love you too"];
+      Bill -> Carly[label = "i hate you"];
+      Carly -> Teru[label = "i love you"];
       Taro [description = "japanese middle man"];
       Bill [description = "american nice guy"];
       Carly [description = "charming canada girl"];
+      Carly [description = "japanese old man"];
    }
