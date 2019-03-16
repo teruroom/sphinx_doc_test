@@ -4,6 +4,9 @@ try sphinx second
 | sequens chart
 | try making
 
+sequens diagram
+================
+
 .. seqdiag::
    :desctable:
 
@@ -14,5 +17,5 @@ try sphinx second
       Taro [description = "japanese middle man"];
       Bill [description = "american nice guy"];
       Carly [description = "charming canada girl"];
-      Carly [description = "japanese old man"];
+      Teru [description = "japanese old man"];
    }
