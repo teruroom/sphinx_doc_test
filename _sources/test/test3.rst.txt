@@ -1,0 +1,85 @@
+========
+タイトル
+========
+
+セクション 1
+============
+
+この **単語** は強調されます。
+
+セクション 2
+============
+
+サブセクション
+::::::::::::::
+箇条書きリスト:
+
+- 一番
+- 二番
+- 三番
+
+サブセクション
+-----------------
+
+列挙型リスト
+
+1. 一番
+2. 二番
+#. #を前に付けると、自動で番号が割り振られます
+
+コード
+
+::
+
+    import numpy as np
+    import pandas as pd
+    import pickle
+    from gensim.models import word2vec
+    import MeCab
+
+    tagger = MeCab.Tagger('-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')#タグはMeCab.Tagger（neologd辞書）を使用
+
+    tagger.parse('')
+    def tokenize_ja(text, lower):
+        node = tagger.parseToNode(str(text))
+        while node:
+            if lower and node.feature.split(',')[0] in ["名詞","形容詞"]:#分かち書きで取得する品詞を指定
+                yield node.surface.lower()
+            node = node.next
+    def tokenize(content, token_min_len, token_max_len, lower):
+        return [
+            str(token) for token in tokenize_ja(content, lower)
+            if token_min_len <= len(token) <= token_max_len and not token.startswith('_')
+        ]
+
+セクション 3
+============
+一覧表
+::::::::::::::
+====== ================ ================
+ID      Value           あほ
+====== ================ ================
+3      データ3              ばか
+4      データ4              まぬけ
+5      データ5              抜け策
+====== ================ ================
+
+#. あほしか
+#. ばかしか
+#. まぬけしか
+
+定義リスト
+
+一
+  一は数字です。
+二
+  二も数字です。
+
+コード
+:::::::::::::
+
+::
+
+    if hoge then
+    end if
+

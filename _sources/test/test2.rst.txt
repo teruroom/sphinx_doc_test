@@ -1,0 +1,24 @@
+sphinx やってみた1
+###########################
+
+| 試しに、こんな感じのページを
+| 作ってみる！
+
+====== ================
+ID      Value
+====== ================
+3      データ3
+4      データ4
+5      データ5
+====== ================
+
+.. seqdiag::
+   :desctable:
+
+   seqdiag {
+      A -> B[label = "test"];
+      B -> C[label = "test"];
+      A [description = "バカでんねん"];
+      B [description = "まぬけさく"];
+      C [description = "database server"];
+   }
