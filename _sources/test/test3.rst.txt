@@ -1,12 +1,27 @@
-========
-title
-========
+=====================
+various documentation
+=====================
 
-section 1
-============
+text decoration
+================
 
-this **word** is strong.
-this *text* is italic
+| this **word** is strong.
+| this *text* is italic
+
+table list
+================
+
+table list
+::::::::::::::
+====== ======== ======= ================
+ID      name     age     status
+====== ======== ======= ================
+1000   jon       55     upper middle
+2000   ken       12     kids
+3000   Lisa      14     teen
+4000   Teru      60     old
+5000   Carly     35     middle
+====== ======== ======= ================
 
 section 2
 ============
@@ -15,20 +30,24 @@ sub section
 ::::::::::::::
 itemization list
 
-- 一番
-- 二番
-- 三番
+- 一番 : this means number one
+- 二番 : this means number two
+- 三番 : this means number three
 
 sub sub section
 -----------------
 
 enum list
 
-#. foo
-#. baa
-#. hoge
+#. foo foo
+#. baa foo
+#. hoge foo
+#. hage foo
 
-pythoncode
+sub sub section
+-----------------
+
+python code
 
 ::
 
@@ -55,20 +74,9 @@ pythoncode
 
 section 3
 ============
-一覧表
-::::::::::::::
-====== ======== ======= ================
-ID      name     age     status
-====== ======== ======= ================
-1000   jon       55     upper middle
-2000   ken       12     kids
-3000   Lisa      14     teen
-4000   Teru      60     old
-====== ======== ======= ================
-
-#. fool
-#. sit
-#. Dark
+#. you're so fool
+#. oh sit
+#. Dark side of the world
 
 definision list
 
