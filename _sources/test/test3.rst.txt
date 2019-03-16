@@ -1,33 +1,34 @@
 ========
-タイトル
+title
 ========
 
-セクション 1
+section 1
 ============
 
-この **単語** は強調されます。
+this **word** is strong.
+this *text* is italic
 
-セクション 2
+section 2
 ============
 
-サブセクション
+sub section
 ::::::::::::::
-箇条書きリスト:
+itemization list
 
 - 一番
 - 二番
 - 三番
 
-サブセクション
+sub sub section
 -----------------
 
-列挙型リスト
+enum list
 
-1. 一番
-2. 二番
-#. #を前に付けると、自動で番号が割り振られます
+#. foo
+#. baa
+#. hoge
 
-コード
+pythoncode
 
 ::
 
@@ -52,34 +53,28 @@
             if token_min_len <= len(token) <= token_max_len and not token.startswith('_')
         ]
 
-セクション 3
+section 3
 ============
 一覧表
 ::::::::::::::
-====== ================ ================
-ID      Value           あほ
-====== ================ ================
-3      データ3              ばか
-4      データ4              まぬけ
-5      データ5              抜け策
-====== ================ ================
+====== ======== ======= ================
+ID      name     age     status
+====== ======== ======= ================
+1000   jon       55     upper middle
+2000   ken       12     kids
+3000   Lisa      14     teen
+4000   Teru      60     old
+====== ======== ======= ================
 
-#. あほしか
-#. ばかしか
-#. まぬけしか
+#. fool
+#. sit
+#. Dark
 
-定義リスト
+definision list
 
 一
-  一は数字です。
+  一 is japanese kanji. this means one.
 二
-  二も数字です。
+  二 is too. this means two.
 
-コード
-:::::::::::::
-
-::
-
-    if hoge then
-    end if
 

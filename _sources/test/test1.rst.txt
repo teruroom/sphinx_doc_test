@@ -1,16 +1,8 @@
-phinx やってみた1
+try sphinx 1
 ###########################
 
-| 試しに、こんな感じのページを
-| 作ってみる！
-
-====== ================
-ID      Value
-====== ================
-3      データ3
-4      データ4
-5      データ5
-====== ================
+| i make first sphinx web documents.
+| these are made by sphinx
 
 .. seqdiag::
    :desctable:
@@ -22,3 +14,16 @@ ID      Value
       B [description = "web server"];
       C [description = "database server"];
    }
+
+table
+
+====== ========= =======
+no     data       note
+====== ========= =======
+1      data 1     foo
+2      data 2     bar
+3      data 3     hoge
+4      data 4     hoge
+5      data 5     hoge
+====== ========= =======
+
