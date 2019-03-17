@@ -30,9 +30,9 @@ sub section
 ::::::::::::::
 itemization list
 
-- 一番 : this means number one
-- 二番 : this means number two
-- 三番 : this means number three
+- number one
+- number two
+- number three
 
 sub sub section
 -----------------
@@ -47,42 +47,25 @@ enum list
 sub sub section
 -----------------
 
-python code
+python code:Search computer for specific files
 
 ::
 
-    import numpy as np
-    import pandas as pd
-    import pickle
-    from gensim.models import word2vec
-    import MeCab
+    import fnmatch
+    import os
 
-    tagger = MeCab.Tagger('-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')#タグはMeCab.Tagger（neologd辞書）を使用
+    images = ['*.jpg', '*.jpeg', '*.png', '*.tif', '*.tiff']
+    matches = []
 
-    tagger.parse('')
-    def tokenize_ja(text, lower):
-        node = tagger.parseToNode(str(text))
-        while node:
-            if lower and node.feature.split(',')[0] in ["名詞","形容詞"]:#分かち書きで取得する品詞を指定
-                yield node.surface.lower()
-            node = node.next
-    def tokenize(content, token_min_len, token_max_len, lower):
-        return [
-            str(token) for token in tokenize_ja(content, lower)
-            if token_min_len <= len(token) <= token_max_len and not token.startswith('_')
-        ]
+    for root, dirnames, filenames in os.walk("C:\"):
+        for extensions in images:
+            for filename in fnmatch.filter(filenames, extensions):
+                matches.append(os.path.join(root, filename))
 
-section 3
-============
-#. you're so fool
-#. oh sit
-#. Dark side of the world
-
-definision list
-
-一
-  一 is japanese kanji. this means one.
-二
-  二 is too. this means two.
+    section 3
+    ============
+    #. you're so fool
+    #. oh sit
+    #. Dark side of the world
 
 

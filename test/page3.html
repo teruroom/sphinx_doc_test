@@ -112,9 +112,9 @@
 <h3>sub section<a class="headerlink" href="#sub-section" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>itemization list</p>
 <ul class="simple">
-<li>一番 : this means number one</li>
-<li>二番 : this means number two</li>
-<li>三番 : this means number three</li>
+<li>number one</li>
+<li>number two</li>
+<li>number three</li>
 </ul>
 <div class="section" id="sub-sub-section">
 <h4>sub sub section<a class="headerlink" href="#sub-sub-section" title="このヘッドラインへのパーマリンク">¶</a></h4>
@@ -128,46 +128,27 @@
 </div>
 <div class="section" id="id2">
 <h4>sub sub section<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>python code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="k">import</span> <span class="n">word2vec</span>
-<span class="kn">import</span> <span class="nn">MeCab</span>
+<p>python code:Search computer for specific files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fnmatch</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">tagger</span> <span class="o">=</span> <span class="n">MeCab</span><span class="o">.</span><span class="n">Tagger</span><span class="p">(</span><span class="s1">&#39;-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd&#39;</span><span class="p">)</span><span class="c1">#タグはMeCab.Tagger（neologd辞書）を使用</span>
+<span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;*.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;*.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;*.png&#39;</span><span class="p">,</span> <span class="s1">&#39;*.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;*.tiff&#39;</span><span class="p">]</span>
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">tagger</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">tokenize_ja</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">lower</span><span class="p">):</span>
-    <span class="n">node</span> <span class="o">=</span> <span class="n">tagger</span><span class="o">.</span><span class="n">parseToNode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
-    <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">lower</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;名詞&quot;</span><span class="p">,</span><span class="s2">&quot;形容詞&quot;</span><span class="p">]:</span><span class="c1">#分かち書きで取得する品詞を指定</span>
-            <span class="k">yield</span> <span class="n">node</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
-<span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">token_min_len</span><span class="p">,</span> <span class="n">token_max_len</span><span class="p">,</span> <span class="n">lower</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span>
-        <span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokenize_ja</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">lower</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">token_min_len</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">token_max_len</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">token</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
-    <span class="p">]</span>
+<span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\&quot;</span><span class="s2">):</span>
+    <span class="k">for</span> <span class="n">extensions</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">extensions</span><span class="p">):</span>
+            <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+
+<span class="n">section</span> <span class="mi">3</span>
+<span class="o">============</span>
+<span class="c1">#. you&#39;re so fool</span>
+<span class="c1">#. oh sit</span>
+<span class="c1">#. Dark side of the world</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="section-3">
-<h2>1.4. section 3<a class="headerlink" href="#section-3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ol class="arabic simple">
-<li>you're so fool</li>
-<li>oh sit</li>
-<li>Dark side of the world</li>
-</ol>
-<p>definision list</p>
-<dl class="docutils">
-<dt>一</dt>
-<dd>一 is japanese kanji. this means one.</dd>
-<dt>二</dt>
-<dd>二 is too. this means two.</dd>
-</dl>
 </div>
 </div>
 
@@ -193,7 +174,6 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#section-3">1.4. section 3</a></li>
 </ul>
 </li>
 </ul>
