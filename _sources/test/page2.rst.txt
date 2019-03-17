@@ -1,0 +1,22 @@
+try sphinx second
+###########################
+
+| sequens chart
+| try making
+
+sequens diagram
+================
+
+.. seqdiag::
+   :desctable:
+
+   seqdiag {
+      Taro -> Bill[label = "i like you"];
+      Bill -> Carly[label = "no comment"];
+      Carly -> Teru[label = "i love you"];
+      Teru -> Carly[label = "i love you too"];
+      Taro [description = "japanese middle man"];
+      Bill [description = "american nice guy"];
+      Carly [description = "charming canada girl"];
+      Teru [description = "japanese old man"];
+   }
