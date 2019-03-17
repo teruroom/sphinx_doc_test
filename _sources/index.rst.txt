@@ -11,15 +11,21 @@ Welcome to teruroom project number 01's documentation!
    :caption: OverView
    :numbered: 1
 
-   /test/test1
-   /test/test2
+   /test/page1
 
 .. toctree::
    :maxdepth: 2
-   :caption: special test
+   :caption: OverView
+   :numbered: 1
+
+   /test/page2
+
+.. toctree::
+   :maxdepth: 2
+   :caption: sphinx test
    :numbered: 2
 
-   /test/test3
+   /test/page3
 
 Indices and tables
 ==================
