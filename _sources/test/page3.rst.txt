@@ -62,10 +62,11 @@ python code:Search computer for specific files
             for filename in fnmatch.filter(filenames, extensions):
                 matches.append(os.path.join(root, filename))
 
-    section 3
-    ============
-    #. you're so fool
-    #. oh sit
-    #. Dark side of the world
+section 3
+============
+#. you're so fool
+#. oh sit
+#. Dark side of the world
+#. sekai no chushin de ai wo sakebu
 
 
