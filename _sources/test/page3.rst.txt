@@ -54,13 +54,13 @@ python code:Search computer for specific files
     import fnmatch
     import os
 
-    images = ['*.jpg', '*.jpeg', '*.png', '*.tif', '*.tiff']
-    matches = []
+    extensions = [ '*.png', '*.jpg', '*.jpeg','*.tif', '*.tiff' ]
+    matches_ = []
 
-    for root, dirnames, filenames in os.walk("C:\"):
-        for extensions in images:
-            for filename in fnmatch.filter(filenames, extensions):
-                matches.append(os.path.join(root, filename))
+    for root_dir, dir_names, file_names in os.walk("C:\"):
+        for extension in extensions:
+            for file_name in fnmatch.filter( file_names, extension ):
+                matches.append( os.path.join( root_dir, file_name ))
 
 section 3
 ============
